@@ -76,14 +76,14 @@ class NTLMConfig implements \Serializable, \Iterator
         return $this->parameters[$param];
     }
 
-    public function serialize()
+    public function serialize(): array
     {
         return serialize([
             'parameters' => $this->parameters
         ]);
     }
 
-    public function unserialize($data)
+    public function unserialize($data): void
     {
         $data = unserialize($data);
         $this->parameters = $data['parameters'];
