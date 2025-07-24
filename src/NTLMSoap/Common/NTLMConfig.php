@@ -61,19 +61,14 @@ class NTLMConfig implements \Serializable, \Iterator
         }
     }
 
-    public function __set($param, $value)
+    public function __set(string $param, mixed $value): void
     {
         $this->parameters[$param] = $value;
-        return $this;
     }
 
-    public function __get($param)
+    public function __get(string $param): mixed
     {
-        if (!array_key_exists($param, $this->parameters)) {
-            return;
-        }
-
-        return $this->parameters[$param];
+        return $this->parameters[$param] ?? null;
     }
 
     public function serialize(): array
@@ -101,27 +96,27 @@ class NTLMConfig implements \Serializable, \Iterator
         $this->parameters = $data['parameters'] ?? [];
     }
 
-    public function rewind()
+    public function rewind(): void
     {
-        return reset($this->parameters);
+        reset($this->parameters);
     }
 
-    public function current()
+    public function current(): mixed
     {
         return current($this->parameters);
     }
 
-    public function key()
+    public function key(): mixed
     {
         return key($this->parameters);
     }
 
-    public function next()
+    public function next(): void
     {
-        return next($this->parameters);
+        next($this->parameters);
     }
 
-    public function valid()
+    public function valid(): bool
     {
         return key($this->parameters) !== null;
     }
