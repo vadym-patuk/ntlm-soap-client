@@ -8,6 +8,7 @@ on:
 
 jobs:
   phpstan:
+    name: PhpStan
     runs-on: ubuntu-latest
 
     steps:
@@ -23,4 +24,4 @@ jobs:
         run: composer install
 
       - name: PHPStan
-        run: ./vendor/bin/phpstan analyse
+        run: php vendor/bin/phpstan analyze .

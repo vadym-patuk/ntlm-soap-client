@@ -4,3 +4,5 @@ parameters:
   phpVersion: 80300   # emula PHP 8.3
   paths:
     - src
+  excludePaths:
+    - vendor/*
