@@ -17,6 +17,8 @@ RUN { \
         echo "xdebug.client_port=9003"; \
     } > /usr/local/etc/php/conf.d/xdebug.ini
 
+COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
+
 WORKDIR /var/www/html
 COPY . /var/www/html/
 
