@@ -1,0 +1,22 @@
+# docker-compose.yml
+version: '3.8'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: .docker/Dockerfile
+    ports:
+      - "8080:80"
+    volumes:
+      - ./:/var/www/html
+    environment:
+      PHP_DISPLAY_ERRORS: "1"
+      PHP_DISPLAY_STARTUP_ERRORS: "1"
+      PHP_ERROR_REPORTING: "E_ALL"
+    networks:
+      - appnet
+
+networks:
+  appnet:
+    driver: bridge
