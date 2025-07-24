@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  phpstan:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v2
+
+      - name: Build & start services
+        run: docker compose up --build -d
+
+      - name: Pull latest images
+        run: docker compose pull
+
+      - name: Wait for web
+        run: |
+          retries=0
+          until docker compose exec -T web php -v || [ $retries -ge 10 ]; do
+            sleep 3
+            retries=$((retries+1))
+          done
+
+      - name: Run PHPStan
+        run: docker compose exec -T web src vendor/bin/phpstan analyse --no-progress --no-interaction
+
+      - name: Tear down
+        if: always()
+        run: docker compose down --volumes --remove-orphans
