@@ -1,0 +1,14 @@
+{
+  "name": "ntlm-soap-client",
+  "dockerComposeFile": [
+    "../docker-compose.yml"
+  ],
+  "service": "app",
+  "workspaceFolder": "/workspace/ntlm-soap-client",
+  "runServices": [
+    "app",
+    "db"
+  ],
+  "shutdownAction": "stopCompose",
+  "features": {}
+}
