@@ -3,10 +3,10 @@
   "dockerComposeFile": [
     "../docker-compose.yml"
   ],
-  "service": "app",
+  "service": "web",
+  "workspaceFolder": "/var/www/html",
   "runServices": [
-    "app",
-    "db"
+    "web"
   ],
   "shutdownAction": "stopCompose",
   "features": {}
