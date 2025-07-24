@@ -19,7 +19,7 @@ class Client extends BaseClient
      * @param   NTLMConfig $config     Options for NTLM Authentication.
      * @param   array      $options    Native PHP SoapClient options.
      */
-    public function __construct($wdsl, NTLMConfig $config = null, $options = [])
+    public function __construct(string $wdsl, ?NTLMConfig $config = null, array $options = [])
     {
         parent::__construct($wdsl, $config, $options);
     }
