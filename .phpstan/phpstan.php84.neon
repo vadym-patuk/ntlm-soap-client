@@ -1,8 +1,8 @@
 # phpstan.neon
 parameters:
   level: 0
-  phpVersion: 80300
+  phpVersion: 80400
   paths:
-    - src
+    - ../src
   excludePaths:
-    - vendor/*
+    - ../vendor/*

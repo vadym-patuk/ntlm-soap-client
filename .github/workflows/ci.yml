@@ -8,20 +8,34 @@ on:
 
 jobs:
   phpstan:
-    name: PhpStan
+    name: PhpStan (PHP ${{ matrix.php-version }})
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        include:
+          - php-version: '8.3'
+            config: .phpstan/phpstan.php83.neon
+          - php-version: '8.4'
+            config: .phpstan/phpstan.php84.neon
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Setup PHP
+      - name: Setup PHP ${{ matrix.php-version }}
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.3'
+          php-version: ${{ matrix.php-version }}
 
-      - name: Install composer
-        run: composer install
+      - name: Require PHP ${{ matrix.php-version }}.* in composer.json
+        run: composer require "php:${{ matrix.php-version }}.*" --no-update
 
-      - name: PHPStan
-        run: php vendor/bin/phpstan analyse --no-interaction --no-progress
+      - name: Install composer dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run PHPStan
+        run: |
+          php vendor/bin/phpstan analyse \
+            --no-interaction \
+            --no-progress \
+            --configuration="${{ matrix.config }}"
