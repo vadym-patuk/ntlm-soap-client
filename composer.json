@@ -1,12 +1,13 @@
 {
-    "name": "matejsvajger/ntlm-soap-client",
+    "name": "vadym-patuk/ntlm-soap-client",
     "type": "library",
     "description": "PHP WDSL/Soap Client with NTLM Authentication for Microsoft Dynamics NAT Server.",
     "keywords": [
         "matejsvajger",
+        "vadym-patuk",
         "ntlm-soap-client"
     ],
-    "homepage": "https://github.com/matejsvajger/ntlm-soap-client",
+    "homepage": "https://github.com/vadym-patuk/ntlm-soap-client",
     "license": "MIT",
     "authors": [
         {
@@ -14,6 +15,11 @@
             "email": "hello@matejsvajger.com",
             "homepage": "http://www.matejsvajger.com",
             "role": "Owner"
+        },
+        {
+            "name": "Vadym Patuk",
+            "email": "vadympatuk@gmail.com",
+            "role": "Developer"
         }
     ],
     "require": {
