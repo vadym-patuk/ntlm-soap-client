@@ -7,6 +7,16 @@ use matejsvajger\NTLMSoap\Common\NTLMConfig;
 trait NTLMRequest
 {
     /**
+     * @var array|null
+     */
+    private ?array $__last_request_headers = null;
+
+    /**
+     * @var string|null
+     */
+    private ?string $__last_request = null;
+
+    /**
      * Replaces native php \SoapClient function and sends
      * request with NTLM Authentication headers to NAT
      * server.
@@ -43,4 +53,14 @@ trait NTLMRequest
 
         return $response;
     }
+
+    public function getLastRequestHeaders(): ?array
+    {
+        return $this->__last_request_headers;
+    }
+
+    public function getLastRequest(): ?string
+    {
+        return $this->__last_request;
+    }    
 }
