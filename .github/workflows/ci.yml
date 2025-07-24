@@ -24,4 +24,4 @@ jobs:
         run: composer install
 
       - name: PHPStan
-        run: php vendor/bin/phpstan analyze .
+        run: php vendor/bin/phpstan analyse --no-interaction --no-progress

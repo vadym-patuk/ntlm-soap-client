@@ -1,7 +1,7 @@
 # phpstan.neon
 parameters:
   level: 0
-  phpVersion: 80300   # emula PHP 8.3
+  phpVersion: 80300
   paths:
     - src
   excludePaths:
