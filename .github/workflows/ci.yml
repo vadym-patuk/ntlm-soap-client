@@ -30,9 +30,11 @@ jobs:
             sleep 3
             retries=$((retries+1))
           done
-
+    
       - name: Run PHPStan
-        run: docker compose exec -T web src vendor/bin/phpstan analyse --no-progress --no-interaction
+        run: |
+          # Ejecuta phpstan desde el directorio de trabajo
+          docker compose exec -T web bash -lc "cd /var/www/html && vendor/bin/phpstan analyse src --no-progress --no-interaction"        
 
       - name: Tear down
         if: always()
