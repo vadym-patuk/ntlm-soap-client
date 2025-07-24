@@ -89,6 +89,18 @@ class NTLMConfig implements \Serializable, \Iterator
         $this->parameters = $data['parameters'];
     }
 
+    public function __serialize(): array
+    {
+        return [
+            'parameters' => $this->parameters,
+        ];
+    }
+
+    public function __unserialize(array $data): void
+    {
+        $this->parameters = $data['parameters'] ?? [];
+    }
+
     public function rewind()
     {
         return reset($this->parameters);
