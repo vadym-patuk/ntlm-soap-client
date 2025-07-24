@@ -15,6 +15,7 @@ class NTLMStream
     private $opened_path;
     private $buffer;
     private $pos;
+    private ?\CurlHandle $ch = null;
 
     /**
      * Open the stream
