@@ -14,8 +14,8 @@ trait NTLMRequest
      * @author Matej Svajger <hello@matejsvajger.com>
      * @version 1.0
      * @date    2016-11-15
-     */
-    public function __doRequest($request, $location, $action, $version, $one_way = null)
+     */    
+    public function __doRequest(string $request, string $location, string $action, int $version, bool $oneWay = false): ?string
     {
         $auth = NTLMConfig::getAuthString();
 
