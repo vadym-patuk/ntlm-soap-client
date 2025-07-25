@@ -24,7 +24,7 @@
     ],
     "require": {
         "php": "8.3.* || 8.4.*",
-        "symfony/console": "^3.1"
+        "symfony/console": "^5.4.45"
     },
     "require-dev": {
         "phpstan/phpstan": "^2.1",
