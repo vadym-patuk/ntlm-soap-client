@@ -32,7 +32,7 @@ class NTLMFunctionsCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $server = $input->getArgument('server');
         $service = $input->getArgument('service');
@@ -50,5 +50,7 @@ class NTLMFunctionsCommand extends Command
             }
             $output->writeln(implode("\n", $text));
         }
+
+        return Command::SUCCESS;
     }
 }

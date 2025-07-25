@@ -27,7 +27,7 @@ class NTLMTypesCommand extends Command
         ;
     }
 
-    protected function execute(InputInterface $input, OutputInterface $output)
+    protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $url = $input->getArgument('url');
 
@@ -43,5 +43,7 @@ class NTLMTypesCommand extends Command
             }
             $output->writeln(implode("\n", $text));
         }
+
+        return Command::SUCCESS;
     }
 }
